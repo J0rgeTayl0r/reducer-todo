@@ -1,10 +1,10 @@
 export const initialState = {
   todos: [
     {
-      item: "",
-      completed: false,
-      id: 123456789,
-      completeBy: new Date("2020-05-12"),
+        item: 'Learn about reducers',
+        completed: false,
+        id: 3892987589,
+        completeBy: new Date("2020-05-12"),
     },
   ],
 };

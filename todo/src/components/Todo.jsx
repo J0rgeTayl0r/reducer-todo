@@ -3,7 +3,7 @@ import { reducer, initialState } from '../reducers/Reducer';
 import Moment from 'react-moment';
 import TodoForms from './TodoForms';
 
-const Todo = () => {
+const Todo = (props) => {
                      //State and Reducer
                      const [state, dispatch] = useReducer(
                        reducer,
@@ -40,6 +40,11 @@ const Todo = () => {
                              <div
                                className="todo"
                                key={todo.id}
+                               style={
+                                 todo.completed
+                                   ? { textDecoration: "line-through" }
+                                   : null
+                               }
                                onClick={() => toggleCompleted(todo.id)}
                              >
                                {todo.completeBy < Date.now() ? (
