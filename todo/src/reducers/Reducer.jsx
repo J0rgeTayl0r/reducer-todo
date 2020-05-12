@@ -1,0 +1,37 @@
+export const initialState = {
+  todos: [
+    {
+      item: "",
+      completed: false,
+      id: 123456789,
+      completeBy: new Date("2020-05-12"),
+    },
+  ],
+};
+
+export const reducer = (state, action) => {
+  switch (action.type) {
+    //ADD A TODO
+    case "ADD_TODO":
+      return { todos: [...state.todos, action.todo] };
+    //COMPLETED TODO
+    case "TOGGLE_COMPLETED":
+      let newTodos = state.todos.map((todo) => {
+        if (todo.id === action.id) {
+          todo.completed = !todo.completed;
+          return todo;
+        }
+        return todo;
+      });
+      return { todos: newTodos };
+    //CLEAR COMPLETED TODO
+    case "CLEAR_COMPLETED":
+      let unCompletedTodos = state.todos.filter((todo) => {
+        return todo.completed === false;
+      });
+      return { todos: unCompletedTodos };
+    //DEFAULT CASE
+    default:
+      return state;
+  }
+};
