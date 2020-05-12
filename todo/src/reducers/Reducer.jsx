@@ -18,7 +18,9 @@ export const reducer = (state, action) => {
     case "TOGGLE_COMPLETED":
       let newTodos = state.todos.map((todo) => {
         if (todo.id === action.id) {
+          
           todo.completed = !todo.completed;
+
           return todo;
         }
         return todo;
@@ -26,10 +28,10 @@ export const reducer = (state, action) => {
       return { todos: newTodos };
     //CLEAR COMPLETED TODO
     case "CLEAR_COMPLETED":
-      let unCompletedTodos = state.todos.filter((todo) => {
-        return todo.completed === false;
-      });
-      return { todos: unCompletedTodos };
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => !todo.completed),
+      };
     //DEFAULT CASE
     default:
       return state;

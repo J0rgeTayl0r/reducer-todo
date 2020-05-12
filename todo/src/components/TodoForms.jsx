@@ -23,7 +23,7 @@ const TodoForms = ({ addTodo }) => {
     setDate(newDate);
   };
   return (
-    <div>
+    <div >
       <form onSubmit={(event) => handleSubmit(event)}>
         <h3>Add Something New</h3>
         <input

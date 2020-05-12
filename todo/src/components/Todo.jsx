@@ -3,7 +3,7 @@ import { reducer, initialState } from '../reducers/Reducer';
 import Moment from 'react-moment';
 import TodoForms from './TodoForms';
 
-const Todo = (props) => {
+const Todo = props => {
                      //State and Reducer
                      const [state, dispatch] = useReducer(
                        reducer,
@@ -23,6 +23,9 @@ const Todo = (props) => {
 
                      //TOGGLE 
                      const toggleCompleted = (id) => {
+                       
+                        
+                       
                        dispatch({ type: "TOGGLE_COMPLETED", id: id });
                      };
 
@@ -31,12 +34,14 @@ const Todo = (props) => {
                        dispatch({ type: "CLEAR_COMPLETED" });
                      };
                     // Return TODO
-                     return (
+                        return (
+                       
                        <div>
                          <TodoForms addTodo={addTodo} />
                          <h2>Todos</h2>
                          {state.todos.map((todo) => {
                            return (
+                             
                              <div
                                className="todo"
                                key={todo.id}
@@ -54,6 +59,7 @@ const Todo = (props) => {
                                  className={
                                    todo.completed === true ? "completed" : null
                                  }
+                                 onClick={() => toggleCompleted(todo.id)}
                                >
                                  {todo.item}
                                </h3>
@@ -61,10 +67,12 @@ const Todo = (props) => {
                                  Complete by:{" "}
                                  {
                                    <Moment
+                                     interval={1000}
                                      format="MMM Do YYYY"
                                      date={todo.completeBy}
                                    />
                                  }
+                                 
                                </h6>
                              </div>
                            );
